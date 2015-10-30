@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.2.7.RELEASE</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.lenicliu</groupId>
+	<artifactId>tutorials</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<repositories>
+		<repository>
+			<id>spring-release</id>
+			<url>http://repo.spring.io/release</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-libs-release</id>
+			<url>http://repo.spring.io/libs-release</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<modules>
+		<module>tutorials-basic</module>
+		<module>tutorials-framework</module>
+		<module>tutorials-algorithm</module>
+	</modules>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+</project>
