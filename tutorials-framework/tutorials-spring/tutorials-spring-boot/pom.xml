@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.lenicliu</groupId>
+		<artifactId>tutorials-spring</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>tutorials-spring-boot</artifactId>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>jboot-customizing-application</module>
+		<module>jboot-minimum-application</module>
+		<module>jboot-properties-application</module>
+		<module>jboot-logging-application</module>
+		<module>jboot-webmvc-application</module>
+		<module>jboot-multiviews-application</module>
+		<module>jboot-servlet-application</module>
+		<module>jboot-jdbc-application</module>
+		<module>jboot-mybatis-application</module>
+		<module>jboot-shiro-application</module>
+		<module>jboot-datarest-application</module>
+		<module>jboot-mybatis-generator-application</module>
+	</modules>
+</project>
