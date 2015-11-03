@@ -21,5 +21,6 @@
 		<module>jboot-shiro-application</module>
 		<module>jboot-datarest-application</module>
 		<module>jboot-mybatis-generator-application</module>
+		<module>jboot-jsp-application</module>
 	</modules>
 </project>
