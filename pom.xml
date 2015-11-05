@@ -38,6 +38,8 @@
 		<module>tutorials-basic</module>
 		<module>tutorials-framework</module>
 		<module>tutorials-algorithm</module>
+		
+		<module>tutorials-javascript</module>
 	</modules>
 	<properties>
 		<java.version>1.8</java.version>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="Task">
+<head>
+<meta charset="UTF-8">
+<title>Task(AngularJS)</title>
+<script src="angular/1.4.7/angular.min.js" type="text/javascript" charset="UTF-8"></script>
+<style type="text/css">
+.done-true {
+	text-decoration: line-through;
+	color: grey;
+}
+
+.done-false {
+	font-weight: bold;
+	color: red;
+}
+</style>
+</head>
+<body>
+	<div ng-controller="TaskController as taskController">
+		<h2>Simple Task({{taskController.remaining()}}/{{taskController.tasks.length}})</h2>
+		<ul>
+			<li>
+				<form ng-submit="taskController.addTask()">
+					<input type="text" ng-model="taskController.task.text" size="30" placeholder="add new task here" required="required" />
+					<input class="btn-info" type="submit" value="Add" />
+				</form>
+			</li>
+			<li ng-repeat="task in taskController.tasks">
+				<input type="checkbox" ng-model="task.done">
+				<span class="done-{{task.done}}">{{task.time.toTimeString().substring(0, 5)}} {{task.text}}</span>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		angular.module('Task', []).controller('TaskController', function() {
+			this.tasks = [];
+			this.task = {};
+
+			this.addTask = function() {
+				this.tasks.push({
+					text : this.task.text,
+					time : new Date(),
+					done : false
+				});
+				this.task.text = '';
+			};
+
+			this.remaining = function() {
+				var count = 0;
+				angular.forEach(this.tasks, function(task) {
+					count += task.done ? 0 : 1;
+				});
+				return count;
+			};
+		});
+	</script>
+</body>
+</html>
