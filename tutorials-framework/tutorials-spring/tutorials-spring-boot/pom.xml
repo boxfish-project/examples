@@ -22,5 +22,6 @@
 		<module>jboot-datarest-application</module>
 		<module>jboot-mybatis-generator-application</module>
 		<module>jboot-jsp-application</module>
+		<module>jboot-metrics-application</module>
 	</modules>
 </project>

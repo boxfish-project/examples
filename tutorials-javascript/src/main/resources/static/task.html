@@ -7,11 +7,17 @@
 <style type="text/css">
 .done-true {
 	text-decoration: line-through;
-	color: grey;
 }
 
 .done-false {
 	font-weight: bold;
+}
+
+.priority-L {
+	color: blue;
+}
+
+.priority-H {
 	color: red;
 }
 </style>
@@ -23,28 +29,37 @@
 			<li>
 				<form ng-submit="taskController.addTask()">
 					<input type="text" ng-model="taskController.task.text" size="30" placeholder="add new task here" required="required" />
+					<select ng-model="taskController.task.priority">
+						<option value="L" selected="selected">Low</option>
+						<option value="H">High</option>
+					</select>
 					<input class="btn-info" type="submit" value="Add" />
 				</form>
 			</li>
 			<li ng-repeat="task in taskController.tasks">
-				<input type="checkbox" ng-model="task.done">
-				<span class="done-{{task.done}}">{{task.time.toTimeString().substring(0, 5)}} {{task.text}}</span>
+				<input type="checkbox" ng-model="task.done" />
+				<span class="done-{{task.done}} priority-{{task.priority}}">{{task.time.toTimeString().substring(0, 5)}} ({{task.priority}}) {{task.text}}</span>
 			</li>
 		</ul>
 	</div>
 
 	<script type="text/javascript">
 		angular.module('Task', []).controller('TaskController', function() {
+			this.newTask = function() {
+				return {
+					text : '',
+					priority : 'L',
+					done : false
+				}
+			};
+			
 			this.tasks = [];
-			this.task = {};
+			this.task = this.newTask();
 
 			this.addTask = function() {
-				this.tasks.push({
-					text : this.task.text,
-					time : new Date(),
-					done : false
-				});
-				this.task.text = '';
+				this.task.time = new Date();
+				this.tasks.push(this.task);
+				this.task = this.newTask();
 			};
 
 			this.remaining = function() {
