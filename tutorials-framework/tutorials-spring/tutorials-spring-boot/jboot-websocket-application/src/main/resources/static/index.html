@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Spring Boot WebSocket</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var client = new WebSocket("ws://localhost:8080/websocket");
+		client.onmessage = function(e) {
+			document.getElementById('message').innerHTML += e.data + '<br/>';
+		};
+
+		function sendMessage() {
+			var message = document.getElementById('txt-send-message').value;
+			if (message.trim() != '') {
+				client.send(message);
+			} else {
+				client.send('Hello, Spring Boot WebSocket!');
+			}
+		};
+	</script>
+	<input id="txt-send-message" placeholder="input message" />
+	<button id="btn-send-message" onclick="sendMessage();">Send</button>
+	<br /> Received Message :
+	<div id="message" style="background-color: silver;"></div>
+</body>
+</html>

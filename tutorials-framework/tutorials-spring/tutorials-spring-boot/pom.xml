@@ -23,5 +23,6 @@
 		<module>jboot-mybatis-generator-application</module>
 		<module>jboot-jsp-application</module>
 		<module>jboot-metrics-application</module>
+		<module>jboot-websocket-application</module>
 	</modules>
 </project>
