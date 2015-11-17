@@ -104,6 +104,7 @@ public class IO {
 		FileChannel oc = ot.getChannel();
 
 		copy(ic, oc);
+		// ic.transferTo(0, ic.size(), oc);
 
 		ic.close();
 		oc.close();
