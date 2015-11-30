@@ -24,5 +24,12 @@
 		<module>jboot-jsp-application</module>
 		<module>jboot-metrics-application</module>
 		<module>jboot-websocket-application</module>
+		<module>jboot-oauth2-application</module>
+		<module>jboot-redis-application</module>
+		<module>jboot-caching-application</module>
+		<module>jboot-jms-application</module>
+		<module>jboot-session-application</module>
+		<module>jboot-batch-application</module>
+		<module>jboot-hateoas-application</module>
 	</modules>
 </project>
