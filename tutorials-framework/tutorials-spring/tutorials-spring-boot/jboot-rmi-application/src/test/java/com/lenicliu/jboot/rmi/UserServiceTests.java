@@ -22,7 +22,7 @@ public class UserServiceTests {
 	@Configuration
 	public static class Config {
 		@Bean(name = "userService")
-		public HttpInvokerProxyFactoryBean aa() {
+		public HttpInvokerProxyFactoryBean userService() {
 			HttpInvokerProxyFactoryBean bean = new HttpInvokerProxyFactoryBean();
 			bean.setServiceInterface(UserService.class);
 			bean.setServiceUrl("http://localhost:8080/UserService");
