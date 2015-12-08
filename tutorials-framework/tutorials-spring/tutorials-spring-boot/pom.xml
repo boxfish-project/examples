@@ -30,5 +30,6 @@
 		<module>jboot-session-application</module>
 		<module>jboot-batch-application</module>
 		<module>jboot-hateoas-application</module>
+		<module>jboot-rmi-application</module>
 	</modules>
 </project>
