@@ -1,6 +1,7 @@
 package com.lenicliu.jboot.rmi;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,6 +13,7 @@ import org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean;
 public class UserServiceTests {
 
 	@Test
+	@Ignore
 	public void testRequest() throws Exception {
 		ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(Config.class);
 		UserService userService = ctx.getBean(UserService.class);
