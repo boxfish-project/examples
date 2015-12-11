@@ -31,5 +31,6 @@
 		<module>jboot-batch-application</module>
 		<module>jboot-hateoas-application</module>
 		<module>jboot-rmi-application</module>
+		<module>jboot-mybatis2-application</module>
 	</modules>
 </project>
