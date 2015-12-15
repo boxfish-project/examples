@@ -8,8 +8,9 @@ package com.lenicliu.tutorials.algorithm;
  */
 public class Sort {
 
-	private static boolean		print	= false;
-	private static final int[]	array	= { 2, 6, 9, 3, 5, 1, 8, 0, 4, 7 };
+	public static int[] array() {
+		return new int[] { 2, 6, 9, 3, 5, 1, 8, 0, 4, 7 };
+	}
 
 	/**
 	 * Swap array[i] < - > array[j]
@@ -23,9 +24,6 @@ public class Sort {
 			int t = array[i];
 			array[i] = array[j];
 			array[j] = t;
-			if (print) {
-				print(array);
-			}
 		}
 	}
 
@@ -40,20 +38,6 @@ public class Sort {
 			System.out.print(String.format("% 2d", array[i]) + " ");
 		}
 		System.out.println();
-	}
-
-	/**
-	 * Sub-Array
-	 * 
-	 * @param array
-	 * @param i
-	 * @param len
-	 * @return
-	 */
-	public static int[] sub(int[] array, int i, int len) {
-		int[] copy = new int[len];
-		System.arraycopy(array, i, copy, 0, len);
-		return copy;
 	}
 
 	/**
@@ -148,10 +132,13 @@ public class Sort {
 		if (i < j) {
 			int m = array[(i + j) / 2], l = i - 1, h = j + 1;
 			while (true) {
-				while (array[++l] < m);
-				while (array[--h] > m);
-				if (l >= h)
+				while (array[++l] < m) {
+				}
+				while (array[--h] > m) {
+				}
+				if (l >= h) {
 					break;
+				}
 				swap(array, l, h);
 			}
 			quickSort(array, i, l - 1);
@@ -161,37 +148,37 @@ public class Sort {
 
 	public static void main(String[] args) {
 		System.out.println("bubbleSort:");
-		int[] array1 = array.clone();
+		int[] array1 = array();
 		print(array1);
 		bubbleSort(array1);
 		print(array1);
 
 		System.out.println("bubbleSortOptimized:");
-		int[] array2 = array.clone();
+		int[] array2 = array();
 		print(array2);
 		bubbleSortOptimized(array2);
 		print(array2);
 
 		System.out.println("insertSort:");
-		int[] array3 = array.clone();
+		int[] array3 = array();
 		print(array3);
 		insertSort(array3);
 		print(array3);
 
 		System.out.println("selectSort:");
-		int[] array4 = array.clone();
+		int[] array4 = array();
 		print(array4);
 		selectSort(array4);
 		print(array4);
 
 		System.out.println("quickSort:");
-		int[] array5 = array.clone();
+		int[] array5 = array();
 		print(array5);
 		quickSort(array5, 0, array5.length - 1);
 		print(array5);
 
 		System.out.println("quickSortOptimized:");
-		int[] array6 = array.clone();
+		int[] array6 = array();
 		print(array6);
 		quickSortOptimized(array6, 0, array6.length - 1);
 		print(array6);
