@@ -32,7 +32,7 @@ public class ChatHandler implements WebSocketHandler {
 
 	@Override
 	public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
-		String host = session.getRemoteAddress().getHostString();
+		String host = String.format("User(%s)", session.getId());
 		String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 		String text = message.getPayload().toString();
 		logger.info(session.getId() + " : " + text);

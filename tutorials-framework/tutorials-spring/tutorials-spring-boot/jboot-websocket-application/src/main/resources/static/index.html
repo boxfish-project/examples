@@ -7,8 +7,9 @@
 </head>
 <body style="text-align: center;">
 	<div style="width: 800px;">
-		<div id="messages" style="width: 800px; height: 600px; overflow-y: scroll; text-align: left;"></div>
-		<input id="message-editor" style="width: 800px" />
+		<div id="messages" style="width: 800px; height: 600px; overflow-y: scroll; text-align: left;border: 1px solid black;"></div>
+		<span>&nbsp;</span>
+		<input id="message-editor" style="width: 800px;border: 1px solid black;" />
 	</div>
 	<script type="text/javascript">
 		$(function() {
@@ -17,6 +18,7 @@
 				$('#messages').html($('#messages').html() + e.data);
 				$('#messages').scrollTop($('#messages').height());
 			};
+			
 			$('#message-editor').focus();
 			$('#message-editor').keypress(function(e) {
 				if (e && e.keyCode == 13) {
