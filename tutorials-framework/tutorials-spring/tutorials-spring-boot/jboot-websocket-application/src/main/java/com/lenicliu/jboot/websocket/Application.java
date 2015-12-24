@@ -15,7 +15,7 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 public class Application extends SpringBootServletInitializer implements WebSocketConfigurer {
 
 	@Autowired
-	private WebSocketHandler minimunWebSocketHandler;
+	private WebSocketHandler chatHandler;
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
@@ -28,6 +28,6 @@ public class Application extends SpringBootServletInitializer implements WebSock
 
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		registry.addHandler(minimunWebSocketHandler, "/websocket");
+		registry.addHandler(chatHandler, "/websocket");
 	}
 }
