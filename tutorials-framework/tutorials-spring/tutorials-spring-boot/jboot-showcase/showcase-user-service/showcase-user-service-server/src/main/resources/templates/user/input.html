@@ -6,7 +6,7 @@
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
-<body style="text-align: center;">
+<body>
 	<div class="container">
 		<!-- Static navbar -->
 		<nav class="navbar navbar-default">
@@ -37,7 +37,42 @@
 	</div>
 	<!-- /container -->
 	<div class="container">
-	<input/>
+		<form id="input-form" method="POST" action="${request.contextPath}/users/submit">
+			<input type="hidden" name="id" value="${user.id!''}" />
+			<input type="hidden" name="created" value="${user.created!''}" />
+			<div class="form-group">
+				<label for="inputUsername">Username</label>
+				<input type="text" class="form-control" name="username" value="${user.username!''}" id="inputUsername" required="required">
+			</div>
+			<div class="form-group">
+				<label for="inputPassword">Password</label>
+				<input type="password" class="form-control" name="password" value="${user.password!''}" id="inputPassword" required="required">
+			</div>
+			<div class="form-group">
+				<label for="inputPassword1">Password Again</label>
+				<input type="password" class="form-control" value="${user.password!''}" id="inputPassword1" required="required">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+			<#if user.id?exists>
+			<a id="btn-delete" href="${request.contextPath}/users/delete?id=${user.id}" class="btn btn-danger">Delete</a>
+			</#if>
+		</form>
 	</div>
+	<script type="text/javascript">
+		$(function() {
+			$('#input-form').submit(function() {
+				if (!($('#inputPassword').val() == $('#inputPassword1').val())) {
+					alert('Password must be equals');
+					return false;
+				}
+				return true;
+			});
+			<#if user.id?exists>
+			$('#btn-delete').click(function(){
+				return confirm("Are you sure to delete [${user.username}]?");
+			});
+			</#if>
+		});
+	</script>
 </body>
 </html>

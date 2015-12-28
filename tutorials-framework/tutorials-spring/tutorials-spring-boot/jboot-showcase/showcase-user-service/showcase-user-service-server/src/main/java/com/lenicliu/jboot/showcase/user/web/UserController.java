@@ -36,15 +36,23 @@ public class UserController {
 		return new ModelAndView("user/input", "user", user);
 	}
 
+	@RequestMapping("/delete")
+	public String delete(Long id) {
+		if (id != null) {
+			userService.deleteUser(id);
+		}
+		return "redirect:";
+	}
+
 	@RequestMapping("/submit")
 	public String submit(User user) {
 		user = Objects.requireNonNull(user);
 		if (user.getId() != null) {
 			userService.updateUser(user);
-			return "redirect:users/input?id=" + user.getId();
+			return "redirect:input?id=" + user.getId();
 		} else {
 			userService.createUser(user);
-			return "redirect:users";
+			return "redirect:";
 		}
 	}
 }

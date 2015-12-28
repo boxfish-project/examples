@@ -18,13 +18,13 @@ public interface UserMapper {
 	public User findById(@Param("id") Long id);
 
 	@Update("UPDATE TB_USER SET PASSWORD = #{user.password} WHERE ID = #{user.id}")
-	public void update(User user);
+	public void update(@Param("user") User user);
 
 	@Update("DELETE FROM TB_USER WHERE ID = #{id}")
 	public void delete(@Param("id") Long id);
 
 	@Insert("INSERT INTO TB_USER(USERNAME, PASSWORD, CREATED)VALUES(#{user.username}, #{user.password}, #{user.created})")
-	public void insert(User user);
+	public void insert(@Param("user") User user);
 
 	@Select("SELECT * FROM TB_USER WHERE USERNAME LIKE #{keyword} ORDER BY CREATED DESC")
 	public List<User> findList(@Param("keyword") String keyword);
