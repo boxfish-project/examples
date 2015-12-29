@@ -22,10 +22,10 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li>
-							<a href="#">Task</a>
-						</li>
 						<li class="active">
+							<a href="${request.contextPath}/tasks">Task</a>
+						</li>
+						<li>
 							<a href="${request.contextPath}/users">User</a>
 						</li>
 					</ul>
@@ -37,24 +37,20 @@
 	</div>
 	<!-- /container -->
 	<div class="container">
-		<form id="input-form" method="POST" action="${request.contextPath}/users/submit">
-			<input type="hidden" name="id" value="${user.id!''}" />
-			<input type="hidden" name="created" value="${user.created!''}" />
+		<form id="input-form" method="POST" action="${request.contextPath}/tasks/submit">
+			<input type="hidden" name="id" value="${task.id!''}" />
+			<input type="hidden" name="uid" value="${task.uid!''}" />
 			<div class="form-group">
-				<label for="inputUsername">Username</label>
-				<input type="text" class="form-control" name="username" value="${user.username!''}" id="inputUsername" required="required">
+				<label for="inputTitle">Title</label>
+				<input type="text" class="form-control" name="title" value="${task.title!''}" id="inputTitle" required="required">
 			</div>
 			<div class="form-group">
-				<label for="inputPassword">Password</label>
-				<input type="password" class="form-control" name="password" value="${user.password!''}" id="inputPassword" required="required">
-			</div>
-			<div class="form-group">
-				<label for="inputPassword1">Password Again</label>
-				<input type="password" class="form-control" value="${user.password!''}" id="inputPassword1" required="required">
+				<label for="inputDue">Due</label>
+				<input type="text" class="form-control" name="due" value="${task.due!''}" id="inputDue" required="required">
 			</div>
 			<button type="submit" class="btn btn-primary">Submit</button>
-			<#if user.id?exists>
-			<a id="btn-delete" href="${request.contextPath}/users/delete?id=${user.id}" class="btn btn-danger">Delete</a>
+			<#if task.id?exists>
+			<a id="btn-delete" href="${request.contextPath}/tasks/delete?id=${task.id}" class="btn btn-danger">Delete</a>
 			</#if>
 			<a href="${request.contextPath}/tasks" class="btn btn-default">Back</a>
 		</form>
@@ -62,15 +58,11 @@
 	<script type="text/javascript">
 		$(function() {
 			$('#input-form').submit(function() {
-				if (!($('#inputPassword').val() == $('#inputPassword1').val())) {
-					alert('Password must be equals');
-					return false;
-				}
 				return true;
 			});
-			<#if user.id?exists>
+			<#if task.id?exists>
 			$('#btn-delete').click(function(){
-				return confirm("Are you sure delete [${user.username}]?");
+				return confirm("Are you sure delete [${task.title}]?");
 			});
 			</#if>
 		});

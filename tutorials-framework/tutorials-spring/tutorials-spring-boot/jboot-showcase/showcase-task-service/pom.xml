@@ -2,14 +2,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.lenicliu</groupId>
-		<artifactId>tutorials-spring-boot</artifactId>
+		<artifactId>jboot-showcase</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>jboot-showcase</artifactId>
+	<artifactId>showcase-task-service</artifactId>
 	<packaging>pom</packaging>
 	<modules>
-		<module>showcase-commons</module>
-		<module>showcase-user-service</module>
-		<module>showcase-task-service</module>
+		<module>showcase-task-service-api</module>
+		<module>showcase-task-service-endpoint</module>
+		<module>showcase-task-service-server</module>
 	</modules>
 </project>

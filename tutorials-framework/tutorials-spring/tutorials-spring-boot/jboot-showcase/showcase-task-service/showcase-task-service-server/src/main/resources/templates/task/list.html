@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>TODO</title>
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<!-- Static navbar -->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">TODO</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="${request.contextPath}/tasks">Task</a>
+						</li>
+						<li>
+							<a href="${request.contextPath}/users">User</a>
+						</li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+			<!--/.container-fluid -->
+		</nav>
+	</div>
+	<!-- /container -->
+	<div class="container">
+		<a href="${request.contextPath}/tasks/input" class="btn btn-success">Create</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Number</th>
+					<th>Title</th>
+					<th>Due</th>
+					<th>State</th>
+					<th>Operation</th>
+				</tr>
+			</thead>
+			<tbody>
+				<#list tasks as task>
+				<tr>
+					<td>${task.id}</td>
+					<td>${task.title}</td>
+					<td>${task.due}</td>
+					<td>${task.state}</td>
+					<td>
+						<a href="${request.contextPath}/tasks/input?id=${task.id}">Edit</a>
+					</td>
+				</tr>
+				</#list>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

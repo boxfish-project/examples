@@ -1,10 +1,11 @@
-package com.lenicliu.jboot.showcase.user;
+package com.lenicliu.jboot.showcase.user.endpoint;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,7 +44,10 @@ public class UserEndpoint {
 			// user not found
 			return new ResourceElement<User>();
 		}
-		return new ResourceElement<User>(user, Link.Builder.buildSelf("/api/users/" + username));
+		Link _self = Link.Builder.buildSelf("/api/users/" + username, HttpMethod.GET.name());
+		Link _modify = Link.Builder.build("_modify", "/api/users/" + username, HttpMethod.PUT.name());
+		Link _delete = Link.Builder.build("_delete", "/api/users/" + username, HttpMethod.DELETE.name());
+		return new ResourceElement<User>(user, _self, _modify, _delete);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -52,7 +56,7 @@ public class UserEndpoint {
 		if (users == null) {
 			users = Collections.emptyList();
 		}
-		return new ResourceCollection<User>(users, Link.Builder.buildSelf("/api/users"));
+		return new ResourceCollection<User>(users, Link.Builder.buildSelf("/api/users", HttpMethod.GET.name()));
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

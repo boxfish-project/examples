@@ -25,6 +25,7 @@
 	*	showcase-user-service-server(internal)
 *	showcase-task-service
 	*	showcase-task-service-api(internal)
+	*	showcase-task-service-endpoint(public)
 	*	showcase-task-service-standalone(internal)
 *	showcase-security
 	*	shiro

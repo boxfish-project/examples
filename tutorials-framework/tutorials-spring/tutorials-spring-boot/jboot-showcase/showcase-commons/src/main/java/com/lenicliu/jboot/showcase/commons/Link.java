@@ -6,14 +6,16 @@ public interface Link {
 
 	String getName();
 
+	String getMethod();
+
 	public static class Builder {
 
-		public static Link buildSelf(String href) {
-			return build("_self", href);
+		public static Link buildSelf(String href, String method) {
+			return build("_self", href, method);
 		}
 
-		public static Link build(String name, String href) {
-			return new LinkImpl(name, href);
+		public static Link build(String name, String href, String method) {
+			return new LinkImpl(name, href, method);
 		}
 	}
 }
