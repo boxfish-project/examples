@@ -9,5 +9,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>tutorials-spring-boot</module>
+  	<module>tutorials-spring-security</module>
   </modules>
 </project>

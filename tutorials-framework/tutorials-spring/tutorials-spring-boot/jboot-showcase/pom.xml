@@ -11,5 +11,6 @@
 		<module>showcase-commons</module>
 		<module>showcase-user-service</module>
 		<module>showcase-task-service</module>
+		<module>showcase-gateway</module>
 	</modules>
 </project>
