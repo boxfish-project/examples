@@ -9,6 +9,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>tutorials-spring-security-simple</module>
+		<module>tutorials-spring-security-customize</module>
 	</modules>
 	<dependencies>
 		<dependency>
