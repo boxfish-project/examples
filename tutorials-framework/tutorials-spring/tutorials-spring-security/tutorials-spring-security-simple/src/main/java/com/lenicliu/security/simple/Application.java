@@ -10,7 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.context.embedded.ErrorPage;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -75,6 +79,21 @@ public class Application extends SpringBootServletInitializer {
 
 			// disable csrf
 			http.csrf().disable();
+		}
+	}
+	
+	/**
+	 * Customize Servlet Container
+	 *  
+	 * @author lenicliu
+	 */
+	@Component
+	public static class ServletContainer implements EmbeddedServletContainerCustomizer {
+		@Override
+		public void customize(ConfigurableEmbeddedServletContainer container) {
+			container.addErrorPages(new ErrorPage(HttpStatus.FORBIDDEN, "/403.jsp"));
+			container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/404.jsp"));
+			container.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.jsp"));
 		}
 	}
 	

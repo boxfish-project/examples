@@ -14,38 +14,47 @@
 <body>
 	<div class="container">
 		<h2>Spring Boot Security Simple</h2>
-		<span>
-			Hi&nbsp;
-			<sec:authentication property="principal.username" />
-			,&nbsp;
-			<a href="logout">Logout</a>
-		</span>
-		<sec:authorize access="hasAuthority('READ')">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Message</th>
-						<th>Created</th>
-						<th>--</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${messages}" var="message">
-						<tr>
-							<td>${message.message}</td>
-							<td>${message.created}</td>
-							<td>
-								<a href="view?id=${message.id}" class="btn btn-sm btn-primary">View</a>
-								<sec:authorize access="hasAuthority('WRITE')">
-									<a href="input?id=${message.id}" class="btn btn-sm btn-default">Edit</a>
-									<a href="delete?id=${message.id}" class="btn btn-sm btn-danger" onclick="return confirm('Really Delete?');">Delete</a>
-								</sec:authorize>
-							</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</sec:authorize>
+		<div class="row">
+			<div class="col-md-12">
+				Hi&nbsp;
+				<sec:authentication property="principal.username" />
+				,&nbsp;
+				<a href="logout">Logout</a>
+			</div>
+			<sec:authorize access="hasAuthority('WRITE')">
+				<div class="col-md-12">
+					<a href="input" class="btn btn-sm btn-success">Create</a>
+				</div>
+			</sec:authorize>
+			<sec:authorize access="hasAuthority('READ')">
+				<div class="col-md-12">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Message</th>
+								<th>Created</th>
+								<th>--</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${messages}" var="message">
+								<tr>
+									<td>${message.message}</td>
+									<td>${message.created}</td>
+									<td>
+										<a href="view?id=${message.id}" class="btn btn-sm btn-primary">View</a>
+										<sec:authorize access="hasAuthority('WRITE')">
+											<a href="input?id=${message.id}" class="btn btn-sm btn-default">Edit</a>
+											<a href="delete?id=${message.id}" class="btn btn-sm btn-danger" onclick="return confirm('Really Delete?');">Delete</a>
+										</sec:authorize>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</sec:authorize>
+		</div>
 	</div>
 </body>
 </html>

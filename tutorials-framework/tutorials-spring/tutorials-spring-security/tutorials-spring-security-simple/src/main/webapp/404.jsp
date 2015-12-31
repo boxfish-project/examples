@@ -16,16 +16,11 @@
 		<h2>Spring Boot Security Simple</h2>
 		<div class="row">
 			<div class="col-md-12">
-				Hi&nbsp;
-				<sec:authentication property="principal.username" />
-				,&nbsp;
-				<a href="logout">Logout</a>
-			</div>
-			<div class="col-md-12">
 				<p>
-					<b>${message.message}</b>&nbsp;&nbsp;&nbsp;&nbsp;<small>${message.created}</small>
+					Page No Found,
+					<a href="javascript:history.back();">back</a>
+					.
 				</p>
-				<a href="/" class="btn btn-default">Back</a>
 			</div>
 		</div>
 	</div>
