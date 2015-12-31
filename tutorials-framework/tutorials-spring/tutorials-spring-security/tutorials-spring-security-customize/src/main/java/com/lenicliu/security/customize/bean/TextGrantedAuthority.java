@@ -4,9 +4,9 @@ import org.springframework.security.core.GrantedAuthority;
 
 public class TextGrantedAuthority implements GrantedAuthority {
 
-	private static final long	serialVersionUID	= 8042594620133601996L;
+	private static final long serialVersionUID = 8042594620133601996L;
 
-	private String				name;
+	private String name;
 
 	public TextGrantedAuthority(String name) {
 		super();
@@ -41,5 +41,10 @@ public class TextGrantedAuthority implements GrantedAuthority {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "TextGrantedAuthority [name=" + name + "]";
 	}
 }

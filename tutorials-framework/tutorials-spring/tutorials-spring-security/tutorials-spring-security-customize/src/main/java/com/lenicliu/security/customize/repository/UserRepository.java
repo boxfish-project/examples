@@ -22,7 +22,8 @@ public class UserRepository {
 	}
 
 	public User findByUsername(String username) {
-		return jdbcTemplate.queryForObject("SELECT * FROM TB_USER WHERE USERNAME = ?", rowMapper(), username);
+		List<User> users = jdbcTemplate.query("SELECT * FROM TB_USER WHERE USERNAME = ?", rowMapper(), username);
+		return users != null && users.size() == 1 ? users.get(0) : null;
 	}
 
 	public User findById(Long id) {
@@ -41,8 +42,10 @@ public class UserRepository {
 	}
 
 	public void insertUserRoles(Long user_id, List<Long> role_ids) {
-		for (Long role_id : role_ids) {
-			jdbcTemplate.update("INSERT INTO TB_UVR(USER_ID, ROLE_ID)VALUES(?, ?)", user_id, role_id);
+		if (role_ids != null) {
+			for (Long role_id : role_ids) {
+				jdbcTemplate.update("INSERT INTO TB_UVR(USER_ID, ROLE_ID)VALUES(?, ?)", user_id, role_id);
+			}
 		}
 	}
 

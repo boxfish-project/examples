@@ -23,9 +23,9 @@ public class DefaultUserDetails implements UserDetails {
 		this.auths = auths;
 	}
 
-	private User			user;
-	private List<Role>		roles;
-	private List<Authority>	auths;
+	private User user;
+	private List<Role> roles;
+	private List<Authority> auths;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -75,6 +75,11 @@ public class DefaultUserDetails implements UserDetails {
 
 	public User getUser() {
 		return user;
+	}
+
+	@Override
+	public String toString() {
+		return "DefaultUserDetails [user=" + user + ", roles=" + roles + ", auths=" + auths + "]";
 	}
 
 	public List<Role> getRoles() {

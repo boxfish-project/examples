@@ -1,10 +1,11 @@
 package com.lenicliu.security.customize.web.admin;
 
-import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.lenicliu.security.customize.domain.User;
 import com.lenicliu.security.customize.web.AdminController;
@@ -23,11 +24,11 @@ public class UserController extends AdminController {
 	@RequestMapping("/input")
 	public String input(Model model, Long id) {
 		model.addAttribute("user", adminService.findUserById(id));
-		model.addAttribute("role_ids", adminService.findRoleIds(id));
+		model.addAttribute("role_ids", adminService.findRoleIdsByUserId(id));
 		model.addAttribute("roles", adminService.findAllRoles());
 		return "user/input";
 	}
-	
+
 	@RequestMapping("/view")
 	public String view(Model model, Long id) {
 		model.addAttribute("readonly", "readonly");
@@ -36,14 +37,11 @@ public class UserController extends AdminController {
 	}
 
 	@RequestMapping("/submit")
-	public String submit(User user, Long[] role_ids) {
-		if (role_ids == null) {
-			role_ids = new Long[0];
-		}
-		if (user.getId() != null) {
-			adminService.updateUser(user, Arrays.asList(role_ids));
+	public String submit(User user, @RequestParam(value = "role_ids", required = false) List<Long> role_ids) {
+		if (user.getId() != null && user.getId() > 0) {
+			adminService.updateUser(user, role_ids);
 		} else {
-			adminService.createUser(user, Arrays.asList(role_ids));
+			adminService.createUser(user, role_ids);
 		}
 		return "redirect:";
 	}

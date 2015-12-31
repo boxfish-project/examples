@@ -56,8 +56,10 @@ public class RoleRepository {
 	}
 
 	public void insertRoleAuthorities(Long role_id, List<Long> auth_ids) {
-		for (Long auth_id : auth_ids) {
-			jdbcTemplate.update("INSERT INTO TB_RVA(ROLE_ID, AUTH_ID)VALUES(?, ?)", role_id, auth_id);
+		if (auth_ids != null) {
+			for (Long auth_id : auth_ids) {
+				jdbcTemplate.update("INSERT INTO TB_RVA(ROLE_ID, AUTH_ID)VALUES(?, ?)", role_id, auth_id);
+			}
 		}
 	}
 

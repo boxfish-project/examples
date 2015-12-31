@@ -9,7 +9,22 @@
 		<h1>Spring Boot Security Customize</h1>
 		<div class="row">
 			<div class="col-md-12">
+				<c:if test="${param.error != null}">
+					<div class="alert alert-danger">
+						Failed to login.
+						<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
+	                  		Reason: ${SPRING_SECURITY_LAST_EXCEPTION.message}
+						</c:if>
+					</div>
+				</c:if>
+				<!-- the configured LogoutConfigurer#logoutSuccessUrl is /login?logout and contains the query param logout -->
+				<c:if test="${param.logout != null}">
+					<div class="alert alert-success">You have been logged out.</div>
+				</c:if>
+			</div>
+			<div class="col-md-12">
 				<form id="input-form" method="POST" action="${pageContext.request.contextPath}/j_spring_security_check">
+					<sec:csrfInput />
 					<div class="form-group">
 						<label for="inputUsername">Username</label>
 						<input type="text" class="form-control" name="j_username" id="inputUsername" required="required">
@@ -23,5 +38,8 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$('#inputUsername').focus();
+	</script>
 </body>
 </html>
