@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,16 +23,16 @@ import com.lenicliu.security.customize.repository.UserRepository;
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
-	private Logger				logger	= LoggerFactory.getLogger(getClass());
+	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
-	private UserRepository		userRepository;
+	private UserRepository userRepository;
 
 	@Autowired
-	private RoleRepository		roleRepository;
+	private RoleRepository roleRepository;
 
 	@Autowired
-	private AuthorityRepository	authorityRepository;
+	private AuthorityRepository authorityRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) {
@@ -46,7 +47,7 @@ public class UserServiceImpl implements UserService {
 		}
 
 		if (user == null) {
-			return null;
+			throw new UsernameNotFoundException(username);
 		}
 
 		try {

@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.lenicliu.security.customize.web.AdminController;
 
 @Controller
-@RequestMapping("/auths")
+@RequestMapping("/admin/auths")
 public class AuthController extends AdminController {
 
 	@RequestMapping
 	public String list(Model model, String keyword) {
+		model.addAttribute("auths", adminService.findAuthList(keyword));
+		model.addAttribute("keyword", keyword);
 		return "auth/list";
 	}
 }

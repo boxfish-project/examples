@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,15 +20,16 @@ import com.lenicliu.security.customize.repository.UserRepository;
 @Service
 @Transactional
 public class AdminService {
+	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
-	private UserRepository		userRepository;
+	private UserRepository userRepository;
 
 	@Autowired
-	private RoleRepository		roleRepository;
+	private RoleRepository roleRepository;
 
 	@Autowired
-	private AuthorityRepository	authorityRepository;
+	private AuthorityRepository authorityRepository;
 
 	public void createUser(User user, List<Long> role_ids) {
 		user.setId(null);
@@ -95,10 +98,15 @@ public class AdminService {
 	}
 
 	public User findUserById(Long id) {
-		return id == null ? null : userRepository.findById(id);
+		try {
+			return id == null ? null : userRepository.findById(id);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return null;
+		}
 	}
 
-	public List<Long> findRoleIds(Long user_id) {
+	public List<Long> findRoleIdsByUserId(Long user_id) {
 		if (user_id == null) {
 			return Collections.emptyList();
 		}
@@ -108,5 +116,30 @@ public class AdminService {
 			role_ids.add(role.getId());
 		}
 		return role_ids;
+	}
+
+	public Role findRoleById(Long id) {
+		try {
+			return id == null ? null : roleRepository.findById(id);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return null;
+		}
+	}
+
+	public List<Authority> findAllAuths() {
+		return findAuthList(null);
+	}
+
+	public Object findAuthIdsByRoleId(Long role_id) {
+		if (role_id == null) {
+			return Collections.emptyList();
+		}
+		List<Authority> auths = authorityRepository.findByRoleId(role_id);
+		List<Long> auth_ids = new ArrayList<Long>();
+		for (Authority auth : auths) {
+			auth_ids.add(auth.getId());
+		}
+		return auth_ids;
 	}
 }

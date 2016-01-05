@@ -17,13 +17,13 @@ import com.lenicliu.security.customize.repository.MessageRepository;
 @Service
 @Transactional
 public class MessageService {
-	private Logger				logger	= LoggerFactory.getLogger(getClass());
-	
-	@Autowired
-	private MessageRepository	messageRepository;
+	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
-	private UserService			userService;
+	private MessageRepository messageRepository;
+
+	@Autowired
+	private UserService userService;
 
 	public List<MessageBO> findList(String keyword) {
 		List<MessageBO> messageList = new ArrayList<MessageBO>();
@@ -56,5 +56,10 @@ public class MessageService {
 		message.setCreated(new Date());
 		message.setUpdated(new Date());
 		messageRepository.insert(message);
+	}
+
+	public void updateMessage(Message message) {
+		message.setUpdated(new Date());
+		messageRepository.update(message);
 	}
 }

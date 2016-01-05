@@ -12,51 +12,49 @@
 			</button>
 			<a class="navbar-brand" href="javascript:void(0);">Spring Boot Security Customize</a>
 		</div>
-		<sec:authorize access="hasRole('ROLE_USER')">
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li>
-						<a href="${pageContext.request.contextPath}/messages">Message</a>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="${pageContext.request.contextPath}/messages">Message</a>
+				</li>
+				<sec:authorize access="hasAnyAuthority('USER_READ','ROLE_READ','AUTH_READ')">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							Administration
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<sec:authorize access="hasAuthority('USER_READ')">
+								<li>
+									<a href="${pageContext.request.contextPath}/admin/users">User</a>
+								</li>
+							</sec:authorize>
+							<sec:authorize access="hasAuthority('ROLE_READ')">
+								<li>
+									<a href="${pageContext.request.contextPath}/admin/roles">Role</a>
+								</li>
+							</sec:authorize>
+							<sec:authorize access="hasAuthority('AUTH_READ')">
+								<li>
+									<a href="${pageContext.request.contextPath}/admin/auths">Auth</a>
+								</li>
+							</sec:authorize>
+						</ul>
 					</li>
-					<sec:authorize access="hasRole('ADMIN')">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-								Management
-								<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<sec:authorize access="hasAuthority('USER_READ')">
-									<li>
-										<a href="${pageContext.request.contextPath}/admin/users">User</a>
-									</li>
-								</sec:authorize>
-								<sec:authorize access="hasAuthority('ROLE_READ')">
-									<li>
-										<a href="${pageContext.request.contextPath}/admin/roles">Role</a>
-									</li>
-								</sec:authorize>
-								<sec:authorize access="hasAuthority('AUTH_READ')">
-									<li>
-										<a href="${pageContext.request.contextPath}/admin/auths">Auth</a>
-									</li>
-								</sec:authorize>
-							</ul>
-						</li>
-					</sec:authorize>
-				</ul>
-				<sec:authorize access="isAuthenticated()">
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="javascript:void(0);">
-								<sec:authentication property="principal.username" />
-							</a>
-						</li>
-						<li>
-							<a href="${pageContext.request.contextPath}/logout">Logout</a>
-						</li>
-					</ul>
 				</sec:authorize>
-			</div>
-		</sec:authorize>
+			</ul>
+			<sec:authorize access="isAuthenticated()">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="javascript:void(0);">
+							<sec:authentication property="principal.username" />
+						</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/logout">Logout</a>
+					</li>
+				</ul>
+			</sec:authorize>
+		</div>
 	</div>
 </nav>

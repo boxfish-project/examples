@@ -62,4 +62,9 @@ public class Message {
 	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
+	
+	@Override
+	public String toString() {
+		return "Message [id=" + id + ", uid=" + uid + ", content=" + content + ", created=" + created + ", updated=" + updated + "]";
+	}
 }

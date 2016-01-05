@@ -1,5 +1,7 @@
 package com.lenicliu.security.customize;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,9 +12,11 @@ import org.springframework.boot.context.embedded.ErrorPage;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.stereotype.Component;
 
 import com.lenicliu.security.customize.service.UserService;
@@ -35,7 +39,9 @@ public class Application extends SpringBootServletInitializer {
 	 * @author lenicliu
 	 */
 	@EnableWebSecurity
+	@EnableGlobalMethodSecurity(prePostEnabled = true)
 	public static class WebSecurity extends WebSecurityConfigurerAdapter {
+		private Logger logger = LoggerFactory.getLogger(getClass());
 
 		@Autowired
 		private UserService userService;
@@ -50,27 +56,41 @@ public class Application extends SpringBootServletInitializer {
 			// customize login form
 			http.formLogin()
 					// customize url
-					.defaultSuccessUrl("/").failureUrl("/login").loginPage("/login").loginProcessingUrl("/j_spring_security_check")
+					.defaultSuccessUrl("/").failureUrl("/login?error").loginPage("/login").loginProcessingUrl("/j_spring_security_check")
 					// customize parameter
 					.passwordParameter("j_password").usernameParameter("j_username");
+
+			// customize logout
+			http.logout()
+					// customize url
+					.logoutUrl("/logout").logoutSuccessUrl("/login?logout")
+					// session & authentication
+					.invalidateHttpSession(true).clearAuthentication(true)
+					// extra handler
+					.addLogoutHandler((LogoutHandler) (request, response, authentication) -> {
+						if (authentication != null) {
+							logger.info(authentication.toString());
+						}
+					});
 
 			// disable http basic
 			http.httpBasic().disable();
 
 			// granted matcher
-			http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
-
 			http.authorizeRequests().antMatchers("/admin/users").hasAuthority("USER_READ");
+			http.authorizeRequests().antMatchers("/admin/users/view").hasAuthority("USER_READ");
 			http.authorizeRequests().antMatchers("/admin/users/**").hasAuthority("USER_WRITE");
 			http.authorizeRequests().antMatchers("/admin/roles").hasAuthority("ROLE_READ");
+			http.authorizeRequests().antMatchers("/admin/roles/view").hasAuthority("ROLE_READ");
 			http.authorizeRequests().antMatchers("/admin/roles/**").hasAuthority("ROLE_WRITE");
 			http.authorizeRequests().antMatchers("/admin/auths").hasAuthority("AUTH_READ");
 
-			http.authorizeRequests().antMatchers("/messages").hasRole("USER");
 			http.authorizeRequests().antMatchers("/messages/view").hasAuthority("MSG_READ");
 			http.authorizeRequests().antMatchers("/messages/input").hasAuthority("MSG_WRITE");
 			http.authorizeRequests().antMatchers("/messages/submit").hasAuthority("MSG_WRITE");
 			http.authorizeRequests().antMatchers("/messages/delete").hasAuthority("MSG_WRITE");
+			
+			// http.authorizeRequests().antMatchers("/messages/more").hasAuthority("MSG_WRITE");
 
 			// resources/static files
 			http.authorizeRequests().antMatchers("/login", "/j_spring_security_check", "/webjars/**").permitAll();
@@ -78,8 +98,11 @@ public class Application extends SpringBootServletInitializer {
 			// others authenticated
 			http.authorizeRequests().anyRequest().authenticated();
 
-			// disable csrf
-			http.csrf().disable();
+			// enable csrf
+			// http.csrf().disable();
+			
+			// max session for each user
+			http.sessionManagement().maximumSessions(1);
 		}
 	}
 

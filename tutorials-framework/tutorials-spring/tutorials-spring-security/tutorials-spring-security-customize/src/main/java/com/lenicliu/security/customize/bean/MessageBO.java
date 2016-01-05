@@ -12,6 +12,11 @@ public class MessageBO extends Message {
 		this.user = user;
 	}
 
+	@Override
+	public String toString() {
+		return "MessageBO [user=" + user + ", toString()=" + super.toString() + "]";
+	}
+
 	public User getUser() {
 		return user;
 	}
