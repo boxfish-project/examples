@@ -1,23 +1,23 @@
-package com.lenicliu.jboot.showcase.task;
+package com.lenicliu.jboot.showcase.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter;
 
-import com.lenicliu.jboot.showcase.task.service.TaskService;
+import com.lenicliu.jboot.showcase.user.service.UserService;
 
 @Configuration
-public class TaskServiceRegistration {
+public class UserServiceExport {
 
 	@Autowired
-	private TaskService taskService;
+	private UserService userService;
 
-	@Bean(name = "/remote/TaskService")
+	@Bean(name = "/remote/UserService")
 	public HttpInvokerServiceExporter userService() {
 		HttpInvokerServiceExporter exporter = new HttpInvokerServiceExporter();
-		exporter.setServiceInterface(TaskService.class);
-		exporter.setService(taskService);
+		exporter.setServiceInterface(UserService.class);
+		exporter.setService(userService);
 		return exporter;
 	}
 }
