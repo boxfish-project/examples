@@ -51,13 +51,19 @@ public class Application extends SpringBootServletInitializer {
 			InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> authentication = authenticationManagerBuilder.inMemoryAuthentication();
 			
 			// read-only lenicliu
-			authentication.withUser("lenicliu").password("lenicliu").roles("USER").authorities("READ").accountExpired(false).accountLocked(false);
+			authentication.withUser("lenicliu").password("lenicliu")
+				.roles("USER").authorities("READ")
+				.accountExpired(false).accountLocked(false);
 			
 			// access-only guest
-			authentication.withUser("guest").password("guest").roles().authorities(Collections.emptyList()).accountExpired(false).accountLocked(false);
+			authentication.withUser("guest").password("guest")
+				.roles().authorities(Collections.emptyList())
+				.accountExpired(false).accountLocked(false);
 			
 			// management admin
-			authentication.withUser("admin").password("admin").roles("ADMIN").authorities("READ", "WRITE").accountExpired(false).accountLocked(false);
+			authentication.withUser("admin").password("admin")
+				.roles("ADMIN").authorities("READ", "WRITE")
+				.accountExpired(false).accountLocked(false);
 		}
 
 		@Override
