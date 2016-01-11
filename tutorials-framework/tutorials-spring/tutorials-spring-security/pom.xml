@@ -11,6 +11,7 @@
 		<module>tutorials-spring-security-simple</module>
 		<module>tutorials-spring-security-customize</module>
 		<module>tutorials-spring-security-oauth2</module>
+		<module>tutorials-spring-security-server</module>
 	</modules>
 	<dependencies>
 		<dependency>
