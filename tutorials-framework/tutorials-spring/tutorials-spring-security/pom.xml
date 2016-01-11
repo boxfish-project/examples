@@ -10,6 +10,7 @@
 	<modules>
 		<module>tutorials-spring-security-simple</module>
 		<module>tutorials-spring-security-customize</module>
+		<module>tutorials-spring-security-oauth2</module>
 	</modules>
 	<dependencies>
 		<dependency>

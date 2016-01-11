@@ -2,13 +2,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.lenicliu</groupId>
-		<artifactId>tutorials-framework</artifactId>
+		<artifactId>tutorials-spring-security</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>tutorials-spring</artifactId>
-	<packaging>pom</packaging>
-	<modules>
-		<module>tutorials-spring-boot</module>
-		<module>tutorials-spring-security</module>
-	</modules>
+	<artifactId>tutorials-spring-security-oauth2</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+		</dependency>
+	</dependencies>
 </project>
