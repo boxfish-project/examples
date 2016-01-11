@@ -34,7 +34,9 @@ public class Application extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.antMatcher("/**").authorizeRequests().antMatchers("/", "/login**", "/webjars/**").permitAll().anyRequest().authenticated()//
+		http.antMatcher("/**").authorizeRequests()//
+				.antMatchers("/", "/login**", "/webjars/**").permitAll()//
+				.anyRequest().authenticated()//
 				.and().logout().logoutSuccessUrl("/").permitAll()//
 				.and().csrf().disable();
 	}
