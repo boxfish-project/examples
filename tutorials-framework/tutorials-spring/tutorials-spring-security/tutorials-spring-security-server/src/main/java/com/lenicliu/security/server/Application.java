@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 @EnableAuthorizationServer
+@EnableResourceServer
 public class Application extends AuthorizationServerConfigurerAdapter {
 
 	@RequestMapping({ "/", "index", "/state" })
@@ -38,7 +40,10 @@ public class Application extends AuthorizationServerConfigurerAdapter {
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("ssos").secret("ssos").scopes("READ").authorizedGrantTypes("authorization_code", "refresh_token");
+		clients.inMemory().withClient("ssos")//
+		.secret("ssos").scopes("READ")//
+		.authorizedGrantTypes("authorization_code", "refresh_token")//
+		.redirectUris("http://localhost:8080/c/login");
 	}
 
 	public static void main(String[] args) {
@@ -60,9 +65,10 @@ public class Application extends AuthorizationServerConfigurerAdapter {
 
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
-			http.httpBasic().disable()//
+			http//
+					.httpBasic().disable()//
 					.formLogin()//
-					.and().authorizeRequests().antMatchers("/api/user").authenticated()//
+					.and().authorizeRequests().antMatchers("/api/oauth/user").authenticated()//
 					.and().authorizeRequests().antMatchers("/oauth/**").permitAll();
 		}
 	}
