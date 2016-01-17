@@ -29,6 +29,5 @@
 		<module>jboot-hateoas-application</module>
 		<module>jboot-rmi-application</module>
 		<module>jboot-mybatis2-application</module>
-		<module>jboot-showcase</module>
 	</modules>
 </project>
