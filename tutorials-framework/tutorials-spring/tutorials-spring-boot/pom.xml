@@ -29,6 +29,6 @@
 		<module>jboot-hateoas-application</module>
 		<module>jboot-rmi-application</module>
 		<module>jboot-mybatis2-application</module>
-		<module>jboot-shiro2-application</module>
+		<module>tutorials-spring-boot-discovery</module>
 	</modules>
 </project>
