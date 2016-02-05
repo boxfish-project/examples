@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.lenicliu</groupId>
+		<artifactId>examples</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>examples-spring-boot</artifactId>
+	<packaging>pom</packaging>
+	<modules>
+		<module>examples-spring-boot-customizing</module>
+		<module>examples-spring-boot-datarest</module>
+		<module>examples-spring-boot-hateoas</module>
+		<module>examples-spring-boot-jdbc</module>
+		<module>examples-spring-boot-jms</module>
+		<module>examples-spring-boot-jsp</module>
+		<module>examples-spring-boot-logging</module>
+		<module>examples-spring-boot-metrics</module>
+		<module>examples-spring-boot-minimum</module>
+		<module>examples-spring-boot-multiviews</module>
+		<module>examples-spring-boot-mybatis</module>
+		<module>examples-spring-boot-mybatis-generator</module>
+		<module>examples-spring-boot-mybatis2</module>
+		<module>examples-spring-boot-properties</module>
+		<module>examples-spring-boot-rmi</module>
+		<module>examples-spring-boot-servlet</module>
+		<module>examples-spring-boot-session</module>
+		<module>examples-spring-boot-shiro</module>
+		<module>examples-spring-boot-webmvc</module>
+		<module>examples-spring-boot-websocket</module>
+	</modules>
+</project>
