@@ -1,1 +1,0 @@
-meta-inf.resources.txt in classpath:/META-INF/resources
