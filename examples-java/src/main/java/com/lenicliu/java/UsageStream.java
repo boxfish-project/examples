@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * @author lenicliu
  *
  */
-public class StreamExample {
+public class UsageStream {
 
 	public static void main(String[] args) {
 		List<Integer> ints = Arrays.asList(7, 1, 4, 3, 2, 5, 6, 9, 8);

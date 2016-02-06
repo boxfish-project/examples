@@ -22,7 +22,7 @@ import java.text.DecimalFormat;
  * @author lenicliu
  *
  */
-public class IOExample {
+public class UsageIO {
 
 	public static final Charset			UTF_8	= Charset.forName("UTF-8");
 	public static final int				K		= 1024;
@@ -63,7 +63,7 @@ public class IOExample {
 	}
 
 	public static void copy(InputStream in, OutputStream ot) throws IOException {
-		byte[] buffer = new byte[IOExample.M];
+		byte[] buffer = new byte[UsageIO.M];
 		int read = 0;
 		while (true) {
 			read = in.read(buffer);
@@ -75,7 +75,7 @@ public class IOExample {
 	}
 
 	public static void copy(FileChannel ic, FileChannel oc) throws IOException {
-		ByteBuffer buffer = ByteBuffer.allocate(IOExample.M);
+		ByteBuffer buffer = ByteBuffer.allocate(UsageIO.M);
 		int read = 0;
 		while (true) {
 			buffer.clear();
@@ -205,7 +205,7 @@ public class IOExample {
 		File source = new File("source.iso");
 		File target = new File("target.iso");
 
-		double file_size = 1.0 * source.length() * n / IOExample.M;
+		double file_size = 1.0 * source.length() * n / UsageIO.M;
 		double nio_time = 0.0;
 		double nio_speed = 0.0;
 		double io_time = 0.0;

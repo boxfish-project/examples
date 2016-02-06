@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
 
-public class MapPerformance {
+public class PerfMap {
 	static class Timing {
 		public Timing(int length) {
 			super();

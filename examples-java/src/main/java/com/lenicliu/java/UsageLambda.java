@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @author lenicliu
  *
  */
-public class LambdaExample {
+public class UsageLambda {
 
 	public static void main(String[] args) {
 

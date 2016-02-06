@@ -6,7 +6,7 @@ package com.lenicliu.java;
  * @author Lenicliu 2015-01-08
  *
  */
-public class SortExample {
+public class ImplSort {
 
 	public static int[] array() {
 		return new int[] { 2, 6, 9, 3, 5, 1, 8, 0, 4, 7 };

@@ -11,7 +11,7 @@ import java.util.Stack;
 import java.util.TreeSet;
 import java.util.Vector;
 
-public class CollectionPerformance {
+public class PerfCollection {
 
 	static class Timing {
 		public Timing(int length) {
