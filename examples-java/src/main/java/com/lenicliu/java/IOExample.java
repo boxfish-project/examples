@@ -1,4 +1,4 @@
-package com.lenicliu.java.io;
+package com.lenicliu.java;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,12 +17,12 @@ import java.nio.charset.Charset;
 import java.text.DecimalFormat;
 
 /**
- * io
+ * io usage
  * 
  * @author lenicliu
  *
  */
-public class IO {
+public class IOExample {
 
 	public static final Charset			UTF_8	= Charset.forName("UTF-8");
 	public static final int				K		= 1024;
@@ -63,7 +63,7 @@ public class IO {
 	}
 
 	public static void copy(InputStream in, OutputStream ot) throws IOException {
-		byte[] buffer = new byte[IO.M];
+		byte[] buffer = new byte[IOExample.M];
 		int read = 0;
 		while (true) {
 			read = in.read(buffer);
@@ -75,7 +75,7 @@ public class IO {
 	}
 
 	public static void copy(FileChannel ic, FileChannel oc) throws IOException {
-		ByteBuffer buffer = ByteBuffer.allocate(IO.M);
+		ByteBuffer buffer = ByteBuffer.allocate(IOExample.M);
 		int read = 0;
 		while (true) {
 			buffer.clear();
@@ -151,7 +151,8 @@ public class IO {
 					copy(in, ot);
 					long end = System.currentTimeMillis();
 					double time = (end - begin) / 1000.0;
-					System.out.println("server(net):\t" + format.format(size) + "m, " + format.format(time) + " s, " + format.format(size / time) + " mb/s");
+					System.out.println("server(net):\t" + format.format(size) + "m, " + format.format(time) + " s, "
+							+ format.format(size / time) + " mb/s");
 
 					in.close();
 					ot.flush();
@@ -176,7 +177,8 @@ public class IO {
 					copy(in, ot);
 					long end = System.currentTimeMillis();
 					double time = (end - begin) / 1000.0;
-					System.out.println("client(net):\t" + format.format(size) + "m, " + format.format(time) + " s, " + format.format(size / time) + " mb/s");
+					System.out.println("client(net):\t" + format.format(size) + "m, " + format.format(time) + " s, "
+							+ format.format(size / time) + " mb/s");
 
 					in.close();
 					ot.flush();
@@ -203,7 +205,7 @@ public class IO {
 		File source = new File("source.iso");
 		File target = new File("target.iso");
 
-		double file_size = 1.0 * source.length() * n / IO.M;
+		double file_size = 1.0 * source.length() * n / IOExample.M;
 		double nio_time = 0.0;
 		double nio_speed = 0.0;
 		double io_time = 0.0;

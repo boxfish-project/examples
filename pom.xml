@@ -16,7 +16,6 @@
 	</properties>
 	<modules>
 		<module>examples-java</module>
-		<module>examples-java8</module>
 		<module>examples-spring-boot</module>
 		<module>examples-spring-boot-starter</module>
 		<module>examples-spring-security</module>

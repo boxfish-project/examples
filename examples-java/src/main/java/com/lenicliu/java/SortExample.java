@@ -1,4 +1,4 @@
-package com.lenicliu.java.algorithm;
+package com.lenicliu.java;
 
 /**
  * Sort
@@ -6,7 +6,7 @@ package com.lenicliu.java.algorithm;
  * @author Lenicliu 2015-01-08
  *
  */
-public class Sort {
+public class SortExample {
 
 	public static int[] array() {
 		return new int[] { 2, 6, 9, 3, 5, 1, 8, 0, 4, 7 };

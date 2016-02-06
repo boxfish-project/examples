@@ -1,10 +1,10 @@
-package com.lenicliu.java8;
+package com.lenicliu.java;
 
 import java.io.File;
 import java.util.Arrays;
 
 /**
- * Lambda Expressions Examples
+ * Java8 Lambda Expressions Examples
  * 
  * @author lenicliu
  *

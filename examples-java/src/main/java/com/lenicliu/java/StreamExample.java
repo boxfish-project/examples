@@ -1,4 +1,4 @@
-package com.lenicliu.java8;
+package com.lenicliu.java;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * Stream Operation Example
+ * Java8 Stream Operation Example
  * 
  * @author lenicliu
  *
