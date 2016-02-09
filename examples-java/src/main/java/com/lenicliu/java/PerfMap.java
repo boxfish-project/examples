@@ -6,32 +6,11 @@ import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
 
-public class PerfMap {
-	static class Timing {
-		public Timing(int length) {
-			super();
-			this.length = length;
-		}
-
-		int		length;
-		long	insert	= 0;
-		long	search	= 0;
-		long	remove	= 0;
-
-		@Override
-		public String toString() {
-			return String.format("%d\t\t%d\t\t%d\t\t%d", length, insert, remove, search);
-		}
-	}
+public class PerfMap extends Perf {
 
 	static Map<Integer, Integer>	hashMap			= new HashMap<>();
 	static Map<Integer, Integer>	linkedHashMap	= new LinkedHashMap<>();
 	static Map<Integer, Integer>	treeMap			= new TreeMap<>();
-
-	static int						_l1				= 1;
-	static int						_l2				= 10;
-	static int						_l3				= 100;
-	static int						_l4				= 1000;
 
 	public static void main(String[] args) {
 		String columns = "length\t\tinsert\t\tremove\t\tsearch";
@@ -40,14 +19,14 @@ public class PerfMap {
 		System.out.println(performance(_l2, hashMap));
 		System.out.println(performance(_l3, hashMap));
 		System.out.println(performance(_l4, hashMap));
-		
+
 		System.out.println();
 		System.out.println("LinkedHashMap\n" + columns);
 		System.out.println(performance(_l1, linkedHashMap));
 		System.out.println(performance(_l2, linkedHashMap));
 		System.out.println(performance(_l3, linkedHashMap));
 		System.out.println(performance(_l4, linkedHashMap));
-		
+
 		System.out.println();
 		System.out.println("TreeMap\n" + columns);
 		System.out.println(performance(_l1, treeMap));

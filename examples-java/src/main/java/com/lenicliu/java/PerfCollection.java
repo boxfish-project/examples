@@ -11,24 +11,7 @@ import java.util.Stack;
 import java.util.TreeSet;
 import java.util.Vector;
 
-public class PerfCollection {
-
-	static class Timing {
-		public Timing(int length) {
-			super();
-			this.length = length;
-		}
-
-		int		length;
-		long	insert	= 0;
-		long	search	= 0;
-		long	remove	= 0;
-
-		@Override
-		public String toString() {
-			return String.format("%d\t\t%d\t\t%d\t\t%d", length, insert, remove, search);
-		}
-	}
+public class PerfCollection extends Perf {
 
 	static Collection<Integer>	vector			= new Vector<>();
 	static Collection<Integer>	stack			= new Stack<>();
@@ -38,11 +21,6 @@ public class PerfCollection {
 	static Collection<Integer>	linkedHashSet	= new LinkedHashSet<>();
 	static Collection<Integer>	treeSet			= new TreeSet<>();
 	static Collection<Integer>	arrayDeque		= new ArrayDeque<>();
-
-	static int					_l1				= 1;
-	static int					_l2				= 10;
-	static int					_l3				= 100;
-	static int					_l4				= 1000;
 
 	public static void main(String[] args) {
 		String columns = "length\t\tinsert\t\tremove\t\tsearch";
