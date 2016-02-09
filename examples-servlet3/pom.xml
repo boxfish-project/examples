@@ -12,6 +12,7 @@
 		<module>examples-servlet3-webservlet</module>
 		<module>examples-servlet3-weblistener</module>
 		<module>examples-servlet3-webfilter</module>
+		<module>examples-servlet3-modules</module>
 	</modules>
 	<dependencies>
 		<dependency>

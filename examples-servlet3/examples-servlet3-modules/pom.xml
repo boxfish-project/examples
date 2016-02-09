@@ -6,6 +6,11 @@
 		<artifactId>examples-servlet3</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>examples-servlet3-weblistener</artifactId>
-	<packaging>war</packaging>
+	<artifactId>examples-servlet3-modules</artifactId>
+	<packaging>pom</packaging>
+	<modules>
+		<module>examples-servlet3-modules-1</module>
+		<module>examples-servlet3-modules-2</module>
+		<module>examples-servlet3-modules-web</module>
+	</modules>
 </project>

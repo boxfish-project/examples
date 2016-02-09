@@ -3,9 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.lenicliu</groupId>
-		<artifactId>examples-servlet3</artifactId>
+		<artifactId>examples-servlet3-modules</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>examples-servlet3-weblistener</artifactId>
-	<packaging>war</packaging>
+	<artifactId>examples-servlet3-modules-2</artifactId>
 </project>
