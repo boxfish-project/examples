@@ -6,6 +6,8 @@
 <title>Servlet3 Examples</title>
 </head>
 <body>
-Hello Servlet3
+	Hello Servlet3.
+	<br />
+	<a href="attr">View Attributes</a>
 </body>
 </html>

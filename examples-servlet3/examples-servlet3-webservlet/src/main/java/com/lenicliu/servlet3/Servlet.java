@@ -12,17 +12,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(//
-name = "ShowcaseServlet", //
-urlPatterns = { "/", "/index" }, //
+name = "Servlet", //
+urlPatterns = { "/", "/index", "/attr" }, //
 loadOnStartup = 1, //
 description = "This is servlet3 showcase servlet", //
-displayName = "ShowcaseServlet", //
+displayName = "Servlet", //
 initParams = { //
 		@WebInitParam(name = "param1", value = "100", description = "This is param 1"), //
 		@WebInitParam(name = "param2", value = "config.xml", description = "This is param 2"), //
 		@WebInitParam(name = "param3", value = "20160209202000", description = "This is param 3")//
 })
-public class ShowcaseServlet extends HttpServlet {
+public class Servlet extends HttpServlet {
 	private static final String	UTF_8				= "UTF-8";
 	private static final long	serialVersionUID	= -6087859606279926562L;
 	private int					param1;
@@ -31,17 +31,22 @@ public class ShowcaseServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		this.doPost(req, resp);
+		doPost(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setCharacterEncoding(UTF_8);
-		resp.setContentType("text/html");
-		resp.getWriter().write("param1=" + param1 + "</br>");
-		resp.getWriter().write("param2=" + param2 + "</br>");
-		resp.getWriter().write("param3=" + param3 + "</br>");
-		resp.getWriter().write("Hi, WebServlet</br>");
+		if (req.getRequestURI().replaceAll(req.getContextPath(), "").startsWith("/attr")) {
+			resp.setCharacterEncoding(UTF_8);
+			resp.setContentType("text/html");
+			resp.getWriter().write("param1=" + param1 + "<br/>");
+			resp.getWriter().write("param2=" + param2 + "<br/>");
+			resp.getWriter().write("param3=" + param3 + "<br/>");
+			resp.getWriter().write("Hi, WebServlet<br/>");
+			resp.getWriter().close();
+		} else {
+			req.getRequestDispatcher("index.jsp").forward(req, resp);
+		}
 	}
 
 	@Override

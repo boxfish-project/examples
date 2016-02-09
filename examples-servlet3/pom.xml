@@ -10,7 +10,6 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>examples-servlet3-webservlet</module>
-		<module>examples-servlet3-webservlet-showcase</module>
 	</modules>
 	<dependencies>
 		<dependency>
