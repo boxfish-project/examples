@@ -10,6 +10,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>examples-servlet3-webservlet</module>
+		<module>examples-servlet3-weblistener</module>
 	</modules>
 	<dependencies>
 		<dependency>
