@@ -1,4 +1,4 @@
-package com.lenicliu.java;
+package com.lenicliu.java.io;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

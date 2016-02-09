@@ -1,4 +1,4 @@
-package com.lenicliu.java;
+package com.lenicliu.java.util;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.lenicliu.java;
+package com.lenicliu.java.util;
 
 public class Perf {
 	static int	_l1	= 1;

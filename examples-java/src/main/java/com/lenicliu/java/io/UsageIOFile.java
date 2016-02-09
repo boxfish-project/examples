@@ -1,4 +1,4 @@
-package com.lenicliu.java;
+package com.lenicliu.java.io;
 
 import java.io.File;
 import java.io.FileReader;
