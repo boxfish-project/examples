@@ -8,4 +8,15 @@
 	</parent>
 	<artifactId>examples-servlet3</artifactId>
 	<packaging>pom</packaging>
+	<modules>
+		<module>examples-servlet3-webservlet</module>
+		<module>examples-servlet3-webservlet-showcase</module>
+	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 </project>
