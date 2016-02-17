@@ -15,7 +15,7 @@ import java.util.Map;
 
 import org.h2.tools.RunScript;
 
-public class HandleResultSet {
+public class UsageResultSet {
 	public static void main(String[] args) {
 		// load driver class [required]
 		try {
