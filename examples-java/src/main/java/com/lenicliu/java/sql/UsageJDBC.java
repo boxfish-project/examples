@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SimpleJDBC {
+public class UsageJDBC {
 	public static void main(String[] args) {
 
 		// load driver class [required]
