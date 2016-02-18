@@ -9,5 +9,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>examples-spring-cloud-gateway</module>
+  	<module>examples-spring-cloud-discovery</module>
   </modules>
 </project>
