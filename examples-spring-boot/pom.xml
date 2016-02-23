@@ -29,5 +29,6 @@
 		<module>examples-spring-boot-shiro</module>
 		<module>examples-spring-boot-webmvc</module>
 		<module>examples-spring-boot-websocket</module>
+		<module>examples-spring-boot-tomcat</module>
 	</modules>
 </project>
